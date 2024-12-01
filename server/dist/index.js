@@ -21,8 +21,10 @@ const db_1 = require("./db");
 const middleware_1 = require("./middleware");
 const utils_1 = require("./utils");
 const config_1 = require("./config");
+const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
+app.use((0, cors_1.default)());
 app.post("/api/v1/signup", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { username, password } = req.body;
     if (!password || !username) {
@@ -77,7 +79,6 @@ app.post("/api/v1/signin", (req, res) => __awaiter(void 0, void 0, void 0, funct
                 username: user.username,
             }, config_1.JWT_PASSWORD);
             res.status(200).json({
-                message: "You are successfully signed in",
                 token: token,
             });
         }

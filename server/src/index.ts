@@ -10,10 +10,12 @@ import { userMiddleware } from './middleware'
 import { Request, Response } from "express";
 import { random } from './utils'
 import { JWT_PASSWORD } from './config'
+import cors from "cors"
 
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 app.post("/api/v1/signup", async (req, res) => {
     const { username, password } = req.body;
@@ -76,7 +78,6 @@ app.post("/api/v1/signin", async (req: Request, res: Response): Promise<any> => 
             );
 
             res.status(200).json({
-                message: "You are successfully signed in",
                 token: token,
             });
         }
