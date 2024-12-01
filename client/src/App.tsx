@@ -1,11 +1,12 @@
 import React from 'react'
+import SignUp from './pages/SignUp'
+import Dashboard from './pages/Dashboard'
+import SignIn from './pages/SignIn'
 
 const App = () => {
-  return <div className='h-screen w-screen bg-gray-200 flex justify-center items-center'>
-    <div className='bg-white rounded border min-w-48'>
-
-    </div>
-  </div>
+  return (
+    <SignUp/>
+  )
 }
 
 export default App

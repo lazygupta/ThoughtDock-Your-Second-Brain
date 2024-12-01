@@ -8,6 +8,8 @@ interface ButtonProps {
     startIcon?: ReactElement;
     endIcon?: ReactElement;
     onClick?: () => void;
+    fullWidth?: boolean;
+    loading?: boolean
 }
 
 const variantStyles = {
@@ -24,7 +26,7 @@ const sizeStyles = {
 const defaultStyles = "rounded-md flex"
 
 export const Button = (props: ButtonProps) => {
-    return <button onClick={props.onClick} className={` ${variantStyles[props.variant]} ${defaultStyles} ${sizeStyles[props.size]} flex items-center rounded-xl`} >
+    return <button onClick={props.onClick} className={` ${variantStyles[props.variant]} ${defaultStyles} ${sizeStyles[props.size]} flex items-center rounded-xl ${props.fullWidth ? "w-full flex justify-center" : ""} ${props.loading ? "opacity-50 cursor-not-allowed" : ""} `} disabled={props.loading} >
         {props.startIcon ? <div className="pr-2 flex items-center">{props.startIcon}</div> : null} <span>{props.text}</span>
     </button>
 }
