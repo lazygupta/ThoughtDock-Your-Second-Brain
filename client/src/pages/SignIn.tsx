@@ -15,7 +15,6 @@ const SignIn = () => {
         const username = usernameRef.current?.value;
         const password = passwordRef.current?.value;
         
-
         const response = await axios.post(BACKEND_URL +"/api/v1/signin", {
             username,
             password
@@ -23,6 +22,7 @@ const SignIn = () => {
 
         // @ts-ignore
         const jwt = response.data?.token;
+        
         localStorage.setItem("authorization", jwt)
 
         navigate("/dashboard");

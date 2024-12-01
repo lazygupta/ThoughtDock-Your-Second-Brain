@@ -7,13 +7,14 @@ exports.userMiddleware = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const config_1 = require("./config");
 const userMiddleware = (req, res, next) => {
-    const token = req.headers["authorization"];
-    if (!token) {
+    const header = req.headers["authorization"];
+    console.log(header);
+    if (!header) {
         res.status(401).json({ message: "No token received" });
     }
     else {
         // @ts-ignore
-        jsonwebtoken_1.default.verify(token, config_1.JWT_PASSWORD, (err, decoded) => {
+        jsonwebtoken_1.default.verify(header, config_1.JWT_PASSWORD, (err, decoded) => {
             if (err) {
                 res.status(403).json({
                     message: "You are not logged in"

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { ReactElement, useState } from 'react'
 import '../App.css'
 import { Card } from '../components/Card'
 import { CreateContentModal } from '../components/CreateContentModal'
@@ -6,9 +6,11 @@ import { Button } from '../components/ui/Button'
 import { PlusIcon } from '../icons/PlusIcon'
 import { ShareIcon } from '../icons/ShareIcon'
 import { Sidebar } from '../components/Sidebar'
+import { useContent } from '../hooks/useContent'
 
 export default function Dashboard() {
   const [modalOpen, setModalOpen] = useState(false)
+  const contents = useContent();
 
   return <div>
     <Sidebar />
@@ -27,24 +29,24 @@ export default function Dashboard() {
             size="md"
             variant="secondary"
             text="Share Brain"
-            onClick={() => {
-              setModalOpen(true)
-            }}
+            
           />
           <Button
             startIcon={<PlusIcon size="md" />}
             size="md"
             variant="primary"
-            text="Add Content" />
+            text="Add Content" 
+            onClick={() => {
+              setModalOpen(true)
+            }}/>
         </div>
 
 
       </div>
 
       <div className='flex gap-4 flex-wrap'>
-        <Card title="Ptron Earbuds" link="https://twitter.com/lazygupta_/status/1477216755139309568" type="twitter" />
-
-        <Card title="Samay Raina" link="https://www.youtube.com/embed/buSdqtdn_4I?si=GQHn5cP9Z3Zf3gjR" type="youtube" />
+        {contents.map(({title,type,link}) => <Card title={title} link={link} type={type} />)}
+          
 
       </div>
     </div>

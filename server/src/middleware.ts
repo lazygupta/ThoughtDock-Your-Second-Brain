@@ -3,13 +3,16 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import { JWT_PASSWORD } from "./config";
 
 export const userMiddleware = (req: Request, res: Response, next: NextFunction) => {
-    const token = req.headers["authorization"];
+    const header = req.headers["authorization"];
 
-    if (!token) {
+    console.log(header);
+    
+
+    if (!header) {
         res.status(401).json({ message: "No token received" });
     } else {
         // @ts-ignore
-        jwt.verify(token, JWT_PASSWORD, (err, decoded) => {
+        jwt.verify(header as string, JWT_PASSWORD, (err, decoded) => {
             if (err) {
                 res.status(403).json({
                     message: "You are not logged in"

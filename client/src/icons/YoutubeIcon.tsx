@@ -6,7 +6,7 @@ export const YouTubeIcon = (props: IconProps) => {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            className={iconSizeVariants[props.size]}
+            className={iconSizeVariants[props.size] }
             stroke="currentColor"
             stroke-width="2" 
         >
