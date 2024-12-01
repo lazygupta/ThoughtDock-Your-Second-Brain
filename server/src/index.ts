@@ -157,6 +157,7 @@ app.post("/api/v1/brain/share", userMiddleware, async (req, res) => {
                 res.json({
                     hash: existingLink.hash
                 })
+                return;
             }
             const hash = random(10);
             await LinkModel.create({

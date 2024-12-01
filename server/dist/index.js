@@ -151,6 +151,7 @@ app.post("/api/v1/brain/share", middleware_1.userMiddleware, (req, res) => __awa
             res.json({
                 hash: existingLink.hash
             });
+            return;
         }
         const hash = (0, utils_1.random)(10);
         yield db_1.LinkModel.create({

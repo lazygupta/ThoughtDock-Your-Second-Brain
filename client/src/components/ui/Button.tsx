@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
 
-type Variants = "primary" | "secondary"
+type Variants = "primary" | "secondary" | "share"
 interface ButtonProps {
     variant: Variants;
-    size: "sm" | "md" | "lg";
+    size: "sm" | "md" | "lg" | "share";
     text: string;
     startIcon?: ReactElement;
     endIcon?: ReactElement;
@@ -14,13 +14,15 @@ interface ButtonProps {
 
 const variantStyles = {
     "primary": "bg-purple-400 text-white ",
-    "secondary": "bg-purple-300 text-purple-500"
+    "secondary": "bg-purple-300 text-purple-500",
+    "share": "bg-purple-300 text-purple-500 "
 }
 
 const sizeStyles = {
     "sm": "py-1 px-2",
     "md": "py-2 px-4",
-    "lg": "py-4 px-6"
+    "lg": "py-4 px-6",
+    "share": "mt-4 py-2 px-36"
 }
 
 const defaultStyles = "rounded-md flex"

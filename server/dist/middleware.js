@@ -8,7 +8,6 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const config_1 = require("./config");
 const userMiddleware = (req, res, next) => {
     const header = req.headers["authorization"];
-    console.log(header);
     if (!header) {
         res.status(401).json({ message: "No token received" });
     }

@@ -7,9 +7,11 @@ import { PlusIcon } from '../icons/PlusIcon'
 import { ShareIcon } from '../icons/ShareIcon'
 import { Sidebar } from '../components/Sidebar'
 import { useContent } from '../hooks/useContent'
+import { ShareModal } from '../components/ShareModal'
 
 export default function Dashboard() {
   const [modalOpen, setModalOpen] = useState(false)
+  const [shareModalOpen, setShareModalOpen] = useState(false)
   const contents = useContent();
 
   return <div>
@@ -19,6 +21,10 @@ export default function Dashboard() {
       <CreateContentModal open={modalOpen} onClose={() => {
         setModalOpen(false)
       }} />
+      <ShareModal open={shareModalOpen} onClose={() => {
+        setShareModalOpen(false)
+      }} />
+      
       <div className='flex m-8 gap-4 items-center justify-between'>
         <div className='text-xl font-bold'>
           All Notes
@@ -29,7 +35,9 @@ export default function Dashboard() {
             size="md"
             variant="secondary"
             text="Share Brain"
-            
+            onClick={() => {
+              setShareModalOpen(true)
+            }}
           />
           <Button
             startIcon={<PlusIcon size="md" />}
