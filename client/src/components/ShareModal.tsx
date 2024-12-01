@@ -23,7 +23,7 @@ export  function ShareModal({ open, onClose }: ShareModalProps) {
         // @ts-ignore
         const hash = await response.data?.hash
 
-        alert(BACKEND_URL+"/api/v1/brain/share"+`/${hash}`)
+        alert(BACKEND_URL+"/api/v1/brain"+`/${hash}`)
     }
     return <div>
         {open && <div>
