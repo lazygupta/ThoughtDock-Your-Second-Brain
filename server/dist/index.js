@@ -88,14 +88,14 @@ app.post("/api/v1/signin", (req, res) => __awaiter(void 0, void 0, void 0, funct
 }));
 app.post("/api/v1/content", middleware_1.userMiddleware, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { link, type, title } = req.body;
-        if (!link || !type || !title) {
+        const { link, type } = req.body;
+        if (!link || !type) {
             res.status(400).json({ message: "Link and title are required" });
         }
         yield db_1.ContentModel.create({
             link,
             type,
-            title,
+            title: req.body.title,
             // @ts-ignore 
             userId: req.userId,
             tags: []

@@ -15,8 +15,8 @@ export function Card({ title, link, type }: CardProps) {
             <div className="flex justify-between">
                 <div className="flex items-center text-md font-semibold">
                     <div className="pr-2 text-gray-500 ">
-                        {type == "youtube" && <YouTubeIcon size="md" /> }
-                        {type == "twitter" && <TwitterIcon size="md" /> }
+                        {type == "youtube" && <YouTubeIcon size="md" />}
+                        {type == "twitter" && <TwitterIcon size="md" />}
                     </div>
                     {title}
                 </div>
@@ -26,18 +26,30 @@ export function Card({ title, link, type }: CardProps) {
                             <ShareIcon size="md" />
                         </a>
                     </div>
-                    <div className="text-gray-500">
+                    <div className="text-gray-500 cursor-pointer">
                         <DeleteIcon size="md" />
                     </div>
                 </div>
             </div>
 
-            {type == "youtube" && 
-            <iframe className="w-full pt-4" src={link.replace("watch", "embed")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe> }
+            {type == "youtube" &&
+                <iframe className="w-full pt-4" src={link.replace("watch", "embed")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
 
             {type == "twitter" && <blockquote className="twitter-tweet">
                 <a href={link}></a>
-            </blockquote> }
+            </blockquote>}
+
+            <div className="flex gap-2 mt-2 text-sm font-semibold ml-2">
+                <span className={` text-purple-500 bg-purple-300 rounded-md p-1  `}>
+                    #design
+                </span>
+                <span className={` text-purple-500 bg-purple-300 rounded-md p-1  `}>
+                    #productivity
+                </span>
+            </div>
+
+
+
 
         </div>
     </div>
